@@ -1,11 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, FormsModule],
+      imports: [AppComponent],
     }).compileComponents();
   });
 
@@ -25,7 +24,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Random Name Picker');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, random-name-picker');
   });
 
   it('should have default names', () => {
