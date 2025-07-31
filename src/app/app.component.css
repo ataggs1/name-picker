@@ -1,0 +1,93 @@
+/* Fireworks Animation */
+.fireworks {
+  position: relative;
+  width: 100px;
+  height: 80px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fireworks.show {
+  opacity: 1;
+}
+
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: firework 1.5s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes firework {
+  0% {
+    transform: translate(50px, 40px) scale(0);
+    opacity: 1;
+    background: var(--color);
+  }
+  15% {
+    transform: translate(50px, 40px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x, 20px), var(--y, 10px)) scale(0);
+    opacity: 0;
+    background: var(--color);
+  }
+}
+
+/* Create multiple firework particles with different trajectories */
+.firework:nth-child(1) {
+  --x: 20px;
+  --y: 10px;
+}
+
+.firework:nth-child(2) {
+  --x: 80px;
+  --y: 15px;
+}
+
+.firework:nth-child(3) {
+  --x: 10px;
+  --y: 60px;
+}
+
+.firework:nth-child(4) {
+  --x: 90px;
+  --y: 55px;
+}
+
+.firework:nth-child(5) {
+  --x: 50px;
+  --y: 5px;
+}
+
+/* Add sparkling effect */
+.firework::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: inherit;
+  border-radius: 50%;
+  top: -1px;
+  left: -1px;
+  animation: sparkle 1.5s ease-out forwards;
+  animation-delay: inherit;
+}
+
+@keyframes sparkle {
+  0%, 15% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
